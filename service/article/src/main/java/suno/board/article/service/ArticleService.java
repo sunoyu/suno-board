@@ -1,5 +1,6 @@
 package suno.board.article.service;
 
+import suno.board.article.service.response.ArticlePageResponse;
 import suno.board.common.snowflake.Snowflake;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,4 +42,15 @@ public class ArticleService {
         articleRepository.deleteById(articleId);
     }
 
+    public ArticlePageResponse readAll(Long boardId, Long page, Long pageSize) {
+        return ArticlePageResponse.of(
+                articleRepository.findAll(boardId, (page - 1) * pageSize, pageSize).stream()
+                        .map(ArticleResponse::from)
+                        .toList(),
+                articleRepository.count(
+                        boardId,
+                        PageLimitCalculator.calculatePageLimit(page, pageSize, 10L)
+                )
+        );
+    }
 }

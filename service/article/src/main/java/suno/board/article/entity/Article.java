@@ -1,5 +1,6 @@
 package suno.board.article.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,6 +20,7 @@ public class Article {
     private Long articleId;
     private String title;
     private String content;
+    @Column(name = "board_id")
     private Long boardId; // shard key
     private Long writerId;
     private LocalDateTime createdAt;

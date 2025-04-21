@@ -10,7 +10,7 @@ spring:
     password: seonho12@
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
-    show-sql: false
+    show-sql: true
     open-in-view: false
     hibernate:
       ddl-auto: none
