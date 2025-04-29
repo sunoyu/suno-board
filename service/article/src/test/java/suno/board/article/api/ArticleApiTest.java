@@ -1,5 +1,6 @@
 package suno.board.article.api;
 
+import org.springframework.core.ParameterizedTypeReference;
 import suno.board.article.service.response.ArticlePageResponse;
 import suno.board.article.service.response.ArticleResponse;
 import lombok.AllArgsConstructor;
@@ -75,31 +76,31 @@ public class ArticleApiTest {
         }
     }
 
-//    @Test
-//    void readAllInfiniteScrollTest() {
-//        List<ArticleResponse> articles1 = restClient.get()
-//                .uri("/v1/articles/infinite-scroll?boardId=1&pageSize=5")
-//                .retrieve()
-//                .body(new ParameterizedTypeReference<List<ArticleResponse>>() {
-//                });
-//
-//        System.out.println("firstPage");
-//        for (ArticleResponse articleResponse : articles1) {
-//            System.out.println("articleResponse.getArticleId() = " + articleResponse.getArticleId());
-//        }
-//
-//        Long lastArticleId = articles1.getLast().getArticleId();
-//        List<ArticleResponse> articles2 = restClient.get()
-//                .uri("/v1/articles/infinite-scroll?boardId=1&pageSize=5&lastArticleId=%s".formatted(lastArticleId))
-//                .retrieve()
-//                .body(new ParameterizedTypeReference<List<ArticleResponse>>() {
-//                });
-//
-//        System.out.println("secondPage");
-//        for (ArticleResponse articleResponse : articles2) {
-//            System.out.println("articleResponse.getArticleId() = " + articleResponse.getArticleId());
-//        }
-//    }
+    @Test
+    void readAllInfiniteScrollTest() {
+        List<ArticleResponse> articles1 = restClient.get()
+                .uri("/v1/articles/infinite-scroll?boardId=1&pageSize=5")
+                .retrieve()
+                .body(new ParameterizedTypeReference<List<ArticleResponse>>() { // 리스트로 반환이기 때문에
+                });
+
+        System.out.println("firstPage");
+        for (ArticleResponse articleResponse : articles1) {
+            System.out.println("articleResponse.getArticleId() = " + articleResponse.getArticleId());
+        }
+
+        Long lastArticleId = articles1.getLast().getArticleId();
+        List<ArticleResponse> articles2 = restClient.get()
+                .uri("/v1/articles/infinite-scroll?boardId=1&pageSize=5&lastArticleId=%s".formatted(lastArticleId))
+                .retrieve()
+                .body(new ParameterizedTypeReference<List<ArticleResponse>>() {
+                });
+
+        System.out.println("secondPage");
+        for (ArticleResponse articleResponse : articles2) {
+            System.out.println("articleResponse.getArticleId() = " + articleResponse.getArticleId());
+        }
+    }
 //
 //    @Test
 //    void countTest() {
