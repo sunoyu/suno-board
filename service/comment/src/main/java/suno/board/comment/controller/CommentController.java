@@ -2,6 +2,7 @@ package suno.board.comment.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import suno.board.comment.service.CommentService;
 import suno.board.comment.service.request.CommentCreateRequest;
@@ -9,6 +10,7 @@ import suno.board.comment.service.response.CommentResponse;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class CommentController {
@@ -23,6 +25,9 @@ public class CommentController {
 
     @PostMapping("/v1/comments")
     public CommentResponse create(@RequestBody CommentCreateRequest request) {
+
+        log.info("tt");
+
         return commentService.create(request);
     }
 

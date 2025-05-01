@@ -47,12 +47,12 @@ public class CommentApiTest {
 
     @Test
     void delete() {
-        //        commentId=123694721668214784 - x
-        //          commentId=123694721986981888 - x
-        //          commentId=123694722045702144 - x
+        //        commentId=176309303463378944 - x
+        //          commentId=176309303928946688 - x
+        //          commentId=176309303991861248 - x
 
         restClient.delete()
-                .uri("/v1/comments/{commentId}", 123694722045702144L)
+                .uri("/v1/comments/{commentId}", 176309303991861248L)
                 .retrieve();
     }
 //
