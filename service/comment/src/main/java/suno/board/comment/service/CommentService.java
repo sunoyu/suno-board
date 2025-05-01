@@ -9,8 +9,6 @@ import suno.board.comment.service.request.CommentCreateRequest;
 import suno.board.comment.service.response.CommentResponse;
 import suno.board.common.snowflake.Snowflake;
 
-import java.util.function.Predicate;
-
 import static java.util.function.Predicate.not;
 
 @Service
